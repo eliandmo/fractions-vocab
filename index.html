@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fraction Vocabulary – 3rd Grade</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ══════════ RESET & ROOT ══════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red:    #f43f5e;
+  --orange: #f97316;
+  --yellow: #eab308;
+  --green:  #22c55e;
+  --teal:   #14b8a6;
+  --blue:   #3b82f6;
+  --indigo: #6366f1;
+  --purple: #a855f7;
+  --pink:   #ec4899;
+  --bg:     #fffbf0;
+  --dark:   #1e1b4b;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ══════════ ANIMATED BG BLOBS ══════════ */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 500px 400px at 10% 15%, #fde68a55 0%, transparent 70%),
+    radial-gradient(ellipse 400px 350px at 90% 80%, #c7d2fe55 0%, transparent 70%),
+    radial-gradient(ellipse 350px 300px at 50% 50%, #bbf7d055 0%, transparent 70%);
+}
+
+/* ══════════ HEADER ══════════ */
+header {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #f97316 100%);
+  overflow: hidden;
+}
+header::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 0; right: 0; height: 28px;
+  background: var(--bg);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.header-stars {
+  position: absolute; inset: 0; pointer-events: none;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  font-size: 1.4rem;
+  animation: floatStar 4s ease-in-out infinite;
+  opacity: .7;
+}
+@keyframes floatStar {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-10px) rotate(20deg); }
+}
+.star:nth-child(1){ top:15%; left:8%;  animation-delay:0s; }
+.star:nth-child(2){ top:60%; left:15%; animation-delay:.6s; }
+.star:nth-child(3){ top:20%; left:82%; animation-delay:1.2s; }
+.star:nth-child(4){ top:65%; left:88%; animation-delay:1.8s; }
+.star:nth-child(5){ top:10%; left:50%; animation-delay:.9s; }
+
+.header-pill {
+  display: inline-block;
+  background: rgba(255,255,255,.25);
+  border: 1.5px solid rgba(255,255,255,.5);
+  border-radius: 999px;
+  padding: .25rem .9rem;
+  font-size: .72rem; font-weight: 800;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: white; margin-bottom: .7rem;
+}
+header h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  color: white;
+  text-shadow: 3px 3px 0 rgba(0,0,0,.15);
+  letter-spacing: .04em;
+  position: relative;
+}
+header p {
+  color: rgba(255,255,255,.9);
+  font-size: .95rem; font-weight: 700;
+  margin-top: .4rem; position: relative;
+}
+
+/* ══════════ SCORE BAR ══════════ */
+.scorebar {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.5rem; padding: .9rem 1rem;
+  background: white;
+  box-shadow: 0 2px 12px rgba(0,0,0,.07);
+  flex-wrap: wrap;
+}
+.score-chip {
+  display: flex; align-items: center; gap: .4rem;
+  background: #f1f5f9; border-radius: 999px;
+  padding: .3rem .9rem;
+  font-weight: 800; font-size: .88rem;
+}
+.score-chip .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+
+/* ══════════ NAV TABS ══════════ */
+nav {
+  position: relative; z-index: 1;
+  display: flex; gap: .5rem;
+  justify-content: center; flex-wrap: wrap;
+  padding: 1.2rem 1rem .6rem;
+}
+.tab-btn {
+  border: none; cursor: pointer;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem; letter-spacing: .04em;
+  border-radius: 999px;
+  padding: .55rem 1.4rem;
+  transition: all .22s;
+  box-shadow: 0 3px 10px rgba(0,0,0,.12);
+  position: relative; overflow: hidden;
+}
+.tab-btn::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,.0);
+  transition: background .18s;
+}
+.tab-btn:hover::after { background: rgba(255,255,255,.18); }
+.tab-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 16px rgba(0,0,0,.18); }
+
+.tab-flash  { background: linear-gradient(135deg,#6366f1,#818cf8); color: white; }
+.tab-match  { background: linear-gradient(135deg,#f97316,#fb923c); color: white; }
+.tab-fill   { background: linear-gradient(135deg,#14b8a6,#2dd4bf); color: white; }
+.tab-btn.active { transform: translateY(-3px) scale(1.06); box-shadow: 0 7px 20px rgba(0,0,0,.22); }
+
+/* ══════════ PAGES ══════════ */
+.page { display: none; position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: .8rem 1rem 4rem; }
+.page.active { display: block; animation: popIn .35s cubic-bezier(.34,1.56,.64,1); }
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.96) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ══════════ SECTION TITLE ══════════ */
+.section-title {
+  text-align: center; margin-bottom: 1.4rem;
+}
+.section-title h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.8rem; letter-spacing: .04em;
+}
+.section-title p {
+  font-size: .88rem; font-weight: 600; color: #64748b; margin-top: .2rem;
+}
+
+/* ══════════ FLASHCARDS ══════════ */
+.fc-wrapper {
+  display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
+}
+.fc-counter {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem; color: #64748b; letter-spacing: .04em;
+}
+.fc-scene {
+  width: 100%; max-width: 520px; height: 280px;
+  perspective: 1000px; cursor: pointer;
+}
+.fc-card {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .55s cubic-bezier(.4,0,.2,1);
+  border-radius: 26px;
+}
+.fc-card.flipped { transform: rotateY(180deg); }
+.fc-face {
+  position: absolute; inset: 0;
+  border-radius: 26px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 1.8rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,.13);
+}
+.fc-front {
+  background: white;
+  border: 4px solid transparent;
+}
+.fc-back {
+  background: white;
+  transform: rotateY(180deg);
+  border: 4px solid transparent;
+}
+.fc-emoji { font-size: 2.6rem; margin-bottom: .6rem; line-height: 1; }
+.fc-term {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2rem; letter-spacing: .04em;
+  margin-bottom: .3rem;
+}
+.fc-tap-hint {
+  font-size: .75rem; font-weight: 700; opacity: .5;
+  margin-top: .5rem; display: flex; align-items: center; gap: .3rem;
+}
+.fc-def {
+  font-size: 1rem; font-weight: 700; line-height: 1.55;
+  margin-bottom: .6rem;
+}
+.fc-example {
+  font-size: .82rem; font-weight: 600;
+  background: rgba(255,255,255,.5);
+  border-radius: 12px; padding: .4rem .8rem;
+  border: 2px solid rgba(255,255,255,.6);
+}
+.fc-visual { margin-top: .5rem; }
+
+/* fraction inline */
+.fr {
+  display: inline-flex; flex-direction: column; align-items: center;
+  font-family: 'Fredoka One', cursive; font-weight: 900;
+  line-height: 1; vertical-align: middle; margin: 0 2px;
+}
+.fr .fn { padding-bottom: 1px; }
+.fr .fb { display: block; width: 100%; border-top: 2.5px solid currentColor; }
+.fr .fd { padding-top: 1px; }
+.fr.sm { font-size: .95rem; }
+.fr.md { font-size: 1.3rem; }
+.fr.lg { font-size: 1.9rem; }
+
+/* mini bar in flashcard */
+.mini-bar {
+  display: flex; height: 22px; width: 160px;
+  border-radius: 6px; overflow: hidden;
+  border: 2px solid rgba(0,0,0,.15); margin: .3rem auto 0;
+}
+.mini-seg { flex: 1; border-right: 1.5px solid rgba(255,255,255,.6); }
+.mini-seg:last-child { border-right: none; }
+
+.fc-nav {
+  display: flex; gap: .7rem; align-items: center;
+}
+.fc-nav-btn {
+  border: none; cursor: pointer; border-radius: 999px;
+  padding: .55rem 1.3rem;
+  font-family: 'Fredoka One', cursive; font-size: 1rem;
+  color: white; transition: all .2s;
+  box-shadow: 0 3px 10px rgba(0,0,0,.15);
+}
+.fc-nav-btn:hover { transform: translateY(-2px); }
+.fc-prev { background: linear-gradient(135deg,#94a3b8,#64748b); }
+.fc-next { background: linear-gradient(135deg,#6366f1,#818cf8); }
+.fc-shuffle { background: linear-gradient(135deg,#ec4899,#f472b6); }
+
+.fc-progress {
+  width: 100%; max-width: 520px;
+  height: 8px; background: #e2e8f0; border-radius: 999px; overflow: hidden;
+}
+.fc-progress-fill {
+  height: 100%; border-radius: 999px;
+  background: linear-gradient(90deg,#6366f1,#ec4899);
+  transition: width .35s ease;
+}
+
+/* ══════════ MATCHING GAME ══════════ */
+.match-instructions {
+  background: white; border-radius: 18px; padding: 1rem 1.3rem;
+  box-shadow: 0 3px 14px rgba(0,0,0,.07);
+  margin-bottom: 1.2rem;
+  border-left: 5px solid var(--orange);
+  font-size: .9rem; font-weight: 700; color: #7c2d12;
+}
+.match-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .6rem;
+}
+.match-col-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem; text-align: center;
+  margin-bottom: .4rem; letter-spacing: .04em;
+}
+.match-col { display: flex; flex-direction: column; gap: .5rem; }
+.match-card {
+  background: white;
+  border-radius: 14px; padding: .75rem 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,.07);
+  cursor: pointer;
+  font-weight: 700; font-size: .88rem;
+  border: 3px solid transparent;
+  transition: all .18s;
+  position: relative;
+  user-select: none;
+  line-height: 1.4;
+}
+.match-card:hover { transform: translateY(-2px); box-shadow: 0 5px 16px rgba(0,0,0,.12); }
+.match-card.selected {
+  border-color: var(--indigo);
+  background: #eef2ff;
+  box-shadow: 0 0 0 3px rgba(99,102,241,.2);
+}
+.match-card.matched {
+  border-color: var(--green) !important;
+  background: #f0fdf4 !important;
+  cursor: default;
+  opacity: .85;
+}
+.match-card.matched::after {
+  content: '✓';
+  position: absolute; top: .3rem; right: .5rem;
+  color: var(--green); font-weight: 900; font-size: 1rem;
+}
+.match-card.wrong {
+  border-color: var(--red) !important;
+  background: #fff1f2 !important;
+  animation: shake .3s ease;
+}
+@keyframes shake {
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-6px)}
+  75%{transform:translateX(6px)}
+}
+.match-card .term-badge {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  display: block; margin-bottom: .2rem;
+}
+.match-result {
+  text-align: center; margin-top: 1rem;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  display: none;
+}
+.match-result.show { display: block; animation: popIn .4s ease; }
+.match-reset {
+  display: block; margin: .8rem auto 0;
+  border: none; cursor: pointer;
+  background: linear-gradient(135deg,#f97316,#fb923c);
+  color: white; border-radius: 999px;
+  padding: .55rem 1.6rem;
+  font-family: 'Fredoka One', cursive; font-size: 1rem;
+  box-shadow: 0 3px 12px rgba(249,115,22,.3);
+  transition: all .2s;
+}
+.match-reset:hover { transform: translateY(-2px); }
+
+/* ══════════ FILL IN THE BLANK ══════════ */
+.fitb-word-bank {
+  background: white; border-radius: 18px;
+  padding: 1rem 1.2rem; margin-bottom: 1.2rem;
+  box-shadow: 0 3px 14px rgba(0,0,0,.07);
+  border-top: 5px solid var(--teal);
+}
+.fitb-word-bank .wb-title {
+  font-family: 'Fredoka One', cursive; font-size: 1rem;
+  color: var(--teal); margin-bottom: .7rem; letter-spacing: .04em;
+}
+.wb-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.wb-chip {
+  background: linear-gradient(135deg,#e0f2fe,#bae6fd);
+  border: 2px solid #7dd3fc;
+  border-radius: 999px; padding: .3rem .9rem;
+  font-weight: 800; font-size: .84rem; color: #0c4a6e;
+  cursor: pointer; transition: all .18s;
+  user-select: none;
+}
+.wb-chip:hover { transform: scale(1.06); box-shadow: 0 3px 8px rgba(14,165,233,.2); }
+.wb-chip.used { opacity: .35; cursor: default; transform: none; pointer-events: none; }
+
+.fitb-questions { display: flex; flex-direction: column; gap: .9rem; }
+.fitb-q {
+  background: white; border-radius: 16px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  border-left: 5px solid #e2e8f0;
+  transition: border-color .2s;
+  font-size: .93rem; font-weight: 700; line-height: 1.8;
+}
+.fitb-q.answered-ok  { border-left-color: var(--green); background: #f0fdf4; }
+.fitb-q.answered-no  { border-left-color: var(--red);   background: #fff1f2; }
+.blank {
+  display: inline-block;
+  min-width: 120px; height: 30px;
+  background: #f1f5f9; border: 2.5px dashed #94a3b8;
+  border-radius: 8px; vertical-align: middle;
+  cursor: pointer; text-align: center;
+  line-height: 28px; font-family: 'Fredoka One', cursive;
+  font-size: .95rem; color: #475569; margin: 0 .2rem;
+  transition: all .18s;
+  padding: 0 .5rem;
+}
+.blank:hover { border-color: var(--teal); background: #f0fdfa; }
+.blank.filled {
+  border-style: solid; border-color: var(--blue);
+  background: #eff6ff; color: var(--dark);
+  cursor: pointer;
+}
+.blank.correct { border-color: var(--green); background: #dcfce7; color: #15803d; cursor: default; }
+.blank.incorrect { border-color: var(--red); background: #fee2e2; color: #dc2626; }
+
+.fitb-btn-row { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.2rem; justify-content: center; }
+.fitb-check {
+  border: none; cursor: pointer; border-radius: 999px;
+  padding: .6rem 1.6rem;
+  font-family: 'Fredoka One', cursive; font-size: 1rem;
+  color: white; transition: all .2s;
+  box-shadow: 0 3px 12px rgba(0,0,0,.15);
+}
+.fitb-check:hover { transform: translateY(-2px); }
+.fitb-check-btn { background: linear-gradient(135deg,#14b8a6,#2dd4bf); }
+.fitb-reset-btn { background: linear-gradient(135deg,#94a3b8,#64748b); }
+
+.fitb-score-box {
+  text-align: center; margin-top: 1rem;
+  background: white; border-radius: 18px; padding: 1.2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,.1);
+  display: none;
+}
+.fitb-score-box.show { display: block; animation: popIn .4s ease; }
+.fitb-score-big {
+  font-family: 'Fredoka One', cursive; font-size: 2.8rem;
+  background: linear-gradient(135deg,#14b8a6,#6366f1);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.fitb-score-msg { font-weight: 800; color: #475569; margin-top: .3rem; }
+
+/* ══════════ CONGRATS ══════════ */
+.confetti-wrapper {
+  pointer-events: none; position: fixed; inset: 0; z-index: 999;
+  display: none;
+}
+.confetti-wrapper.active { display: block; }
+.confetti-piece {
+  position: absolute; top: -20px;
+  width: 10px; height: 14px;
+  border-radius: 2px;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* ══════════ STARS CELEBRATE ══════════ */
+.stars-row {
+  display: flex; gap: .3rem; justify-content: center; font-size: 1.6rem;
+  margin: .4rem 0;
+}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:540px){
+  .match-grid { grid-template-columns: 1fr; }
+  .match-col-label { display: none; }
+  .fc-scene { height: 230px; }
+  .fc-term { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- CONFETTI -->
+<div class="confetti-wrapper" id="confetti"></div>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <div class="header-stars">
+    <span class="star">⭐</span><span class="star">🌟</span>
+    <span class="star">✨</span><span class="star">⭐</span><span class="star">🌟</span>
+  </div>
+  <div class="header-pill">📚 3rd Grade · Math Vocabulary</div>
+  <h1>🔢 Fraction Word Wall</h1>
+  <p>Comparing &amp; Ordering Fractions · Building Vocabulary</p>
+</header>
+
+<!-- ══════════ SCORE BAR ══════════ -->
+<div class="scorebar">
+  <div class="score-chip"><div class="dot" style="background:#6366f1"></div><span id="fcSeen">0</span> / 10 cards seen</div>
+  <div class="score-chip"><div class="dot" style="background:#f97316"></div><span id="matchScore">0</span> / 10 matched</div>
+  <div class="score-chip"><div class="dot" style="background:#14b8a6"></div><span id="fitbScore">0</span> / 8 correct</div>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <button class="tab-btn tab-flash active" onclick="goPage('pg-flash',this)">📇 Flashcards</button>
+  <button class="tab-btn tab-match"        onclick="goPage('pg-match',this)">🎯 Matching Game</button>
+  <button class="tab-btn tab-fill"         onclick="goPage('pg-fill',this)">✏️ Fill in the Blank</button>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     PAGE 1 — FLASHCARDS
+══════════════════════════════════════════════ -->
+<div class="page active" id="pg-flash">
+  <div class="section-title">
+    <h2 style="background:linear-gradient(135deg,#6366f1,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">📇 Flashcards</h2>
+    <p>Tap the card to flip it and see the definition! Use the arrows to move between words.</p>
+  </div>
+
+  <div class="fc-wrapper">
+    <div class="fc-counter" id="fcCounter">Card 1 of 10</div>
+
+    <div class="fc-scene" onclick="flipCard()">
+      <div class="fc-card" id="fcCard">
+        <div class="fc-face fc-front" id="fcFront"></div>
+        <div class="fc-face fc-back"  id="fcBack"></div>
+      </div>
+    </div>
+
+    <div class="fc-progress">
+      <div class="fc-progress-fill" id="fcProgFill" style="width:10%"></div>
+    </div>
+
+    <div class="fc-nav">
+      <button class="fc-nav-btn fc-prev" onclick="fcMove(-1)">◀ Prev</button>
+      <button class="fc-nav-btn fc-shuffle" onclick="fcShuffle()">🔀 Shuffle</button>
+      <button class="fc-nav-btn fc-next" onclick="fcMove(1)">Next ▶</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGE 2 — MATCHING
+══════════════════════════════════════════════ -->
+<div class="page" id="pg-match">
+  <div class="section-title">
+    <h2 style="background:linear-gradient(135deg,#f97316,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">🎯 Matching Game</h2>
+    <p>Click a word, then click its matching definition. Match all 10 pairs to win! 🏆</p>
+  </div>
+
+  <div class="match-instructions">
+    💡 <strong>How to play:</strong> Click a <strong>WORD</strong> on the left, then click its <strong>DEFINITION</strong> on the right. If they match — great! If not, try again!
+  </div>
+
+  <div style="display:flex;justify-content:space-between;max-width:860px;margin:0 auto .3rem;">
+    <div class="match-col-label" style="color:var(--indigo);">📖 WORDS</div>
+    <div class="match-col-label" style="color:var(--orange);">💬 DEFINITIONS</div>
+  </div>
+
+  <div class="match-grid">
+    <div class="match-col" id="matchTerms"></div>
+    <div class="match-col" id="matchDefs"></div>
+  </div>
+
+  <div class="match-result" id="matchResult"></div>
+  <button class="match-reset" onclick="initMatch()">🔀 Shuffle &amp; Play Again</button>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGE 3 — FILL IN THE BLANK
+══════════════════════════════════════════════ -->
+<div class="page" id="pg-fill">
+  <div class="section-title">
+    <h2 style="background:linear-gradient(135deg,#14b8a6,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">✏️ Fill in the Blank</h2>
+    <p>Click a word from the bank, then click the blank where it belongs!</p>
+  </div>
+
+  <div class="fitb-word-bank">
+    <div class="wb-title">📦 Word Bank — click a word to select it, then click the blank!</div>
+    <div class="wb-chips" id="wbChips"></div>
+  </div>
+
+  <div class="fitb-questions" id="fitbQuestions"></div>
+
+  <div class="fitb-btn-row">
+    <button class="fitb-check fitb-check-btn" onclick="checkFitb()">Check Answers ✓</button>
+    <button class="fitb-check fitb-reset-btn" onclick="resetFitb()">Reset ↺</button>
+  </div>
+
+  <div class="fitb-score-box" id="fitbScoreBox">
+    <div class="fitb-score-big" id="fitbScoreBig"></div>
+    <div class="stars-row" id="fitbStars"></div>
+    <div class="fitb-score-msg" id="fitbScoreMsg"></div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════
+   VOCABULARY DATA — 10 words
+══════════════════════════════════════ */
+const VOCAB = [
+  {
+    id: 1,
+    term: "Fraction",
+    emoji: "🍕",
+    color: ["#6366f1","#818cf8"],
+    shortDef: "A number that names part of a whole or part of a group.",
+    fullDef: "A number that names equal parts of a whole. Written with a numerator on top and a denominator on the bottom.",
+    example: "3 out of 4 slices eaten = ³⁄₄",
+    visual: "bar",
+    barFilled: 3, barTotal: 4, barColor: "#818cf8"
+  },
+  {
+    id: 2,
+    term: "Numerator",
+    emoji: "⬆️",
+    color: ["#ec4899","#f472b6"],
+    shortDef: "The TOP number of a fraction. It tells how many parts are chosen.",
+    fullDef: "The number written above the fraction bar. It tells how many equal parts you have or are talking about.",
+    example: "In ³⁄₄, the numerator is 3",
+    visual: "frac",
+    fracN: "3", fracD: "4", highlight: "top"
+  },
+  {
+    id: 3,
+    term: "Denominator",
+    emoji: "⬇️",
+    color: ["#f97316","#fb923c"],
+    shortDef: "The BOTTOM number of a fraction. It tells the total equal parts.",
+    fullDef: "The number written below the fraction bar. It tells the total number of equal parts the whole is divided into.",
+    example: "In ³⁄₄, the denominator is 4",
+    visual: "frac",
+    fracN: "3", fracD: "4", highlight: "bottom"
+  },
+  {
+    id: 4,
+    term: "Unlike Fractions",
+    emoji: "🔀",
+    color: ["#14b8a6","#2dd4bf"],
+    shortDef: "Fractions with DIFFERENT denominators (bottom numbers).",
+    fullDef: "Fractions that have different denominators. You can't compare them directly — you need a strategy first!",
+    example: "¾ and ⁷⁄₁₂ are unlike fractions",
+    visual: "bar",
+    barFilled: 3, barTotal: 4, barColor: "#2dd4bf"
+  },
+  {
+    id: 5,
+    term: "Equivalent Fractions",
+    emoji: "⚖️",
+    color: ["#eab308","#fbbf24"],
+    shortDef: "Fractions that look different but have the SAME value.",
+    fullDef: "Two or more fractions that name the same amount, even though they use different numbers. You can make them by multiplying top and bottom by the same number.",
+    example: "½ = ²⁄₄ = ³⁄₆",
+    visual: "bar",
+    barFilled: 3, barTotal: 6, barColor: "#fbbf24"
+  },
+  {
+    id: 6,
+    term: "Common Denominator",
+    emoji: "🤝",
+    color: ["#22c55e","#4ade80"],
+    shortDef: "A shared denominator that two unlike fractions are rewritten with.",
+    fullDef: "A number that is a multiple of both denominators. We rewrite unlike fractions with a common denominator so we can compare them — because then the pieces are the same size!",
+    example: "For ½ and ⅓, the common denominator is 6",
+    visual: "bar",
+    barFilled: 3, barTotal: 6, barColor: "#4ade80"
+  },
+  {
+    id: 7,
+    term: "Common Numerator",
+    emoji: "🔝",
+    color: ["#a855f7","#c084fc"],
+    shortDef: "When fractions are rewritten to have the SAME top number.",
+    fullDef: "When fractions have the same numerator, you compare denominators. The fraction with the smaller denominator is bigger — because its pieces are larger!",
+    example: "²⁄₅ vs ²⁄₄ → same numerator, compare bottoms",
+    visual: "bar",
+    barFilled: 2, barTotal: 5, barColor: "#c084fc"
+  },
+  {
+    id: 8,
+    term: "Benchmark Fraction",
+    emoji: "📌",
+    color: ["#f43f5e","#fb7185"],
+    shortDef: "A well-known fraction used as a reference point, like ½.",
+    fullDef: "A familiar fraction like 0, ¼, ½, ¾, or 1 that we use to quickly compare other fractions. We ask: is this fraction above or below the benchmark?",
+    example: "Is ⅝ closer to 0, ½, or 1?",
+    visual: "bar",
+    barFilled: 5, barTotal: 8, barColor: "#fb7185"
+  },
+  {
+    id: 9,
+    term: "Compare",
+    emoji: "⚔️",
+    color: ["#0ea5e9","#38bdf8"],
+    shortDef: "To decide if one fraction is greater than, less than, or equal to another.",
+    fullDef: "To look at two fractions and decide their relationship. We use the symbols > (greater than), < (less than), or = (equal to).",
+    example: "³⁄₄ > ½ because ³⁄₄ is closer to 1",
+    visual: "symbols"
+  },
+  {
+    id: 10,
+    term: "Order",
+    emoji: "📊",
+    color: ["#d946ef","#e879f9"],
+    shortDef: "To arrange fractions from least to greatest or greatest to least.",
+    fullDef: "To arrange three or more fractions in a sequence — either from smallest to largest (least to greatest) or from largest to smallest (greatest to least).",
+    example: "¼ < ½ < ¾  →  least to greatest",
+    visual: "bar",
+    barFilled: 2, barTotal: 4, barColor: "#e879f9"
+  }
+];
+
+/* ══════════════════════════════════════
+   FILL-IN-THE-BLANK QUESTIONS — 8
+══════════════════════════════════════ */
+const FITB_Q = [
+  { sentence: "The top number of a fraction is called the [blank].", answer: "Numerator",    hint: "It's the number above the line." },
+  { sentence: "The bottom number of a fraction is called the [blank].", answer: "Denominator", hint: "It's the number below the line." },
+  { sentence: "Fractions with different denominators are called [blank].", answer: "Unlike Fractions", hint: "Think: they are not the same type!" },
+  { sentence: "½ = ²⁄₄ = ³⁄₆ are examples of [blank] because they show the same amount.", answer: "Equivalent Fractions", hint: "They are worth the same value." },
+  { sentence: "To compare ¼ and ⅓, we find a [blank] so both fractions have the same bottom number.", answer: "Common Denominator", hint: "We want the same size pieces!" },
+  { sentence: "When two fractions have the same top number, we use the [blank] method and look at the denominators.", answer: "Common Numerator", hint: "Same number on top!" },
+  { sentence: "½ is an example of a [blank] because we use it to quickly tell if another fraction is big or small.", answer: "Benchmark Fraction", hint: "It's like a reference point on a number line." },
+  { sentence: "When we [blank] fractions, we put them in order from least to greatest or greatest to least.", answer: "Order", hint: "Think: arranging in a line!" },
+];
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+function goPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ══════════════════════════════════════
+   FLASHCARDS
+══════════════════════════════════════ */
+let fcIndex = 0, fcFlipped = false, fcSeen = new Set(), fcOrder = [...Array(VOCAB.length).keys()];
+
+function fcRender() {
+  const v = VOCAB[fcOrder[fcIndex]];
+  fcSeen.add(fcOrder[fcIndex]);
+  document.getElementById('fcSeen').textContent = fcSeen.size;
+  document.getElementById('fcCounter').textContent = `Card ${fcIndex+1} of ${VOCAB.length}`;
+  document.getElementById('fcProgFill').style.width = ((fcIndex+1)/VOCAB.length*100)+'%';
+
+  const card = document.getElementById('fcCard');
+  card.classList.remove('flipped');
+  fcFlipped = false;
+
+  // Front
+  const front = document.getElementById('fcFront');
+  front.style.background = `linear-gradient(135deg,${v.color[0]},${v.color[1]})`;
+  front.style.borderColor = v.color[0];
+  front.innerHTML = `
+    <div class="fc-emoji">${v.emoji}</div>
+    <div class="fc-term" style="color:white;text-shadow:2px 2px 0 rgba(0,0,0,.18)">${v.term}</div>
+    <div class="fc-tap-hint" style="color:rgba(255,255,255,.7)">👆 Tap to see definition</div>`;
+
+  // Back
+  const back = document.getElementById('fcBack');
+  back.style.background = `linear-gradient(135deg,${v.color[1]}33,${v.color[0]}22)`;
+  back.style.borderColor = v.color[0];
+
+  let visualHTML = '';
+  if (v.visual === 'bar') {
+    const segs = Array.from({length:v.barTotal}, (_,i) =>
+      `<div class="mini-seg" style="background:${i<v.barFilled?v.barColor:'#e2e8f0'}"></div>`).join('');
+    visualHTML = `<div class="mini-bar">${segs}</div>`;
+  } else if (v.visual === 'frac') {
+    const topStyle   = v.highlight==='top'    ? `color:${v.color[0]};font-size:1.3rem;` : 'color:#475569;';
+    const botStyle   = v.highlight==='bottom' ? `color:${v.color[0]};font-size:1.3rem;` : 'color:#475569;';
+    visualHTML = `<div style="font-family:'Fredoka One',cursive;font-size:1.8rem;display:flex;flex-direction:column;align-items:center;line-height:1.1;">
+      <span style="${topStyle}">${v.fracN}</span>
+      <span style="border-top:3px solid #475569;width:40px;display:block;"></span>
+      <span style="${botStyle}">${v.fracD}</span>
+    </div>`;
+  } else if (v.visual === 'symbols') {
+    visualHTML = `<div style="font-family:'Fredoka One',cursive;font-size:1.8rem;color:${v.color[0]};">  &lt; &nbsp; = &nbsp; &gt;  </div>`;
+  }
+
+  back.innerHTML = `
+    <div class="fc-def">${v.fullDef}</div>
+    <div class="fc-example" style="background:${v.color[0]}18;border-color:${v.color[0]}44;color:${v.color[0]};">
+      📝 ${v.example}
+    </div>
+    <div class="fc-visual" style="margin-top:.5rem;">${visualHTML}</div>`;
+}
+
+function flipCard() {
+  const card = document.getElementById('fcCard');
+  fcFlipped = !fcFlipped;
+  card.classList.toggle('flipped', fcFlipped);
+}
+
+function fcMove(dir) {
+  fcIndex = (fcIndex + dir + VOCAB.length) % VOCAB.length;
+  fcRender();
+}
+
+function fcShuffle() {
+  for (let i = fcOrder.length-1; i>0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [fcOrder[i],fcOrder[j]] = [fcOrder[j],fcOrder[i]];
+  }
+  fcIndex = 0;
+  fcRender();
+}
+
+/* ══════════════════════════════════════
+   MATCHING GAME
+══════════════════════════════════════ */
+let matchSelected = null, matchDone = 0;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+function initMatch() {
+  matchSelected = null; matchDone = 0;
+  document.getElementById('matchResult').className = 'match-result';
+  document.getElementById('matchScore').textContent = '0';
+
+  const termsEl = document.getElementById('matchTerms');
+  const defsEl  = document.getElementById('matchDefs');
+  termsEl.innerHTML = '';
+  defsEl.innerHTML  = '';
+
+  const items = shuffle(VOCAB.slice(0,10));
+  const defsShuffled = shuffle(VOCAB.slice(0,10));
+
+  items.forEach(v => {
+    const div = document.createElement('div');
+    div.className = 'match-card';
+    div.dataset.id = v.id;
+    div.dataset.side = 'term';
+    div.style.borderColor = '#e2e8f0';
+    div.innerHTML = `<span class="term-badge" style="color:${v.color[0]}">${v.emoji} ${v.term}</span>`;
+    div.addEventListener('click', () => matchClick(div));
+    termsEl.appendChild(div);
+  });
+
+  defsShuffled.forEach(v => {
+    const div = document.createElement('div');
+    div.className = 'match-card';
+    div.dataset.id = v.id;
+    div.dataset.side = 'def';
+    div.innerHTML = v.shortDef;
+    div.addEventListener('click', () => matchClick(div));
+    defsEl.appendChild(div);
+  });
+}
+
+function matchClick(el) {
+  if (el.classList.contains('matched') || el.classList.contains('wrong')) return;
+
+  if (!matchSelected) {
+    if (el.dataset.side === 'term') {
+      el.classList.add('selected');
+      matchSelected = el;
+    }
+  } else {
+    if (el.dataset.side === 'def' && !el.classList.contains('selected')) {
+      if (el.dataset.id === matchSelected.dataset.id) {
+        // Match!
+        const color = VOCAB.find(v=>v.id==el.dataset.id).color[0];
+        el.classList.remove('selected'); matchSelected.classList.remove('selected');
+        el.classList.add('matched'); matchSelected.classList.add('matched');
+        el.style.borderColor = color; matchSelected.style.borderColor = color;
+        el.style.background = color+'18'; matchSelected.style.background = color+'18';
+        matchDone++;
+        document.getElementById('matchScore').textContent = matchDone;
+        matchSelected = null;
+        if (matchDone === 10) {
+          setTimeout(() => {
+            const r = document.getElementById('matchResult');
+            r.textContent = '🎉 Amazing! You matched all 10! You\'re a vocabulary superstar! 🌟';
+            r.className = 'match-result show';
+            r.style.color = '#16a34a';
+            launchConfetti();
+          }, 300);
+        }
+      } else {
+        // Wrong
+        el.classList.add('wrong');
+        matchSelected.classList.add('wrong');
+        const prev = matchSelected;
+        setTimeout(() => {
+          el.classList.remove('wrong','selected');
+          prev.classList.remove('wrong','selected');
+        }, 700);
+        matchSelected = null;
+      }
+    } else if (el.dataset.side === 'term') {
+      matchSelected.classList.remove('selected');
+      el.classList.add('selected');
+      matchSelected = el;
+    }
+  }
+}
+
+/* ══════════════════════════════════════
+   FILL IN THE BLANK
+══════════════════════════════════════ */
+let fitbSelected = null; // currently selected word
+let fitbState = {}; // qIndex → filled word
+
+function initFitb() {
+  fitbSelected = null;
+  fitbState = {};
+  document.getElementById('fitbScoreBox').className = 'fitb-score-box';
+
+  // Word bank — unique answers
+  const words = [...new Set(FITB_Q.map(q => q.answer))];
+  const wbEl = document.getElementById('wbChips');
+  wbEl.innerHTML = '';
+  words.forEach(w => {
+    const chip = document.createElement('div');
+    chip.className = 'wb-chip';
+    chip.textContent = w;
+    chip.dataset.word = w;
+    chip.addEventListener('click', () => selectWord(chip));
+    wbEl.appendChild(chip);
+  });
+
+  // Questions
+  const qEl = document.getElementById('fitbQuestions');
+  qEl.innerHTML = '';
+  FITB_Q.forEach((q, i) => {
+    const parts = q.sentence.split('[blank]');
+    const div = document.createElement('div');
+    div.className = 'fitb-q';
+    div.dataset.idx = i;
+    div.innerHTML = `
+      <span style="font-family:'Fredoka One',cursive;color:#94a3b8;font-size:.85rem;">${i+1}.</span>
+      ${parts[0]}<span class="blank" data-idx="${i}" onclick="fillBlank(this)">click to fill</span>${parts[1]}
+      <div style="font-size:.75rem;font-weight:600;color:#94a3b8;margin-top:.3rem;">💡 Hint: ${q.hint}</div>`;
+    qEl.appendChild(div);
+  });
+}
+
+function selectWord(chip) {
+  // Deselect all chips
+  document.querySelectorAll('.wb-chip').forEach(c => c.style.outline = '');
+  if (fitbSelected === chip.dataset.word) {
+    fitbSelected = null;
+    return;
+  }
+  fitbSelected = chip.dataset.word;
+  chip.style.outline = '3px solid #0ea5e9';
+  chip.style.outlineOffset = '2px';
+}
+
+function fillBlank(blankEl) {
+  if (!fitbSelected) {
+    blankEl.style.animation = 'shake .3s ease';
+    setTimeout(() => blankEl.style.animation = '', 300);
+    return;
+  }
+  const idx = parseInt(blankEl.dataset.idx);
+  // If blank already has a word, return it to bank logic
+  fitbState[idx] = fitbSelected;
+  blankEl.textContent = fitbSelected;
+  blankEl.classList.add('filled');
+  blankEl.classList.remove('correct','incorrect');
+  // Deselect
+  document.querySelectorAll('.wb-chip').forEach(c => c.style.outline = '');
+  fitbSelected = null;
+}
+
+function checkFitb() {
+  let correct = 0;
+  FITB_Q.forEach((q, i) => {
+    const blank = document.querySelector(`.blank[data-idx="${i}"]`);
+    const qDiv  = document.querySelector(`.fitb-q[data-idx="${i}"]`);
+    if (!blank) return;
+    const filled = fitbState[i] || '';
+    if (filled.toLowerCase() === q.answer.toLowerCase()) {
+      blank.classList.remove('filled','incorrect'); blank.classList.add('correct');
+      qDiv.classList.remove('answered-no'); qDiv.classList.add('answered-ok');
+      correct++;
+    } else if (filled) {
+      blank.classList.remove('filled','correct'); blank.classList.add('incorrect');
+      qDiv.classList.remove('answered-ok'); qDiv.classList.add('answered-no');
+    }
+  });
+  document.getElementById('fitbScore').textContent = correct;
+
+  const box = document.getElementById('fitbScoreBox');
+  box.className = 'fitb-score-box show';
+  document.getElementById('fitbScoreBig').textContent = `${correct} / ${FITB_Q.length}`;
+  const stars = correct >= 7 ? '⭐⭐⭐' : correct >= 5 ? '⭐⭐' : '⭐';
+  document.getElementById('fitbStars').textContent = stars;
+  const msgs = ['Keep practicing! You got this! 💪','Good effort! Review the words and try again!','Nice work! A few more and you\'ll have it!','Great job! Almost perfect!','🎉 Perfect! You know all the vocabulary!'];
+  document.getElementById('fitbScoreMsg').textContent = msgs[Math.min(4, Math.floor(correct/2))];
+  if (correct === FITB_Q.length) launchConfetti();
+}
+
+function resetFitb() {
+  initFitb();
+  document.getElementById('fitbScore').textContent = '0';
+}
+
+/* ══════════════════════════════════════
+   CONFETTI
+══════════════════════════════════════ */
+function launchConfetti() {
+  const wrap = document.getElementById('confetti');
+  wrap.innerHTML = '';
+  wrap.className = 'confetti-wrapper active';
+  const colors = ['#f43f5e','#f97316','#eab308','#22c55e','#3b82f6','#a855f7','#ec4899','#14b8a6'];
+  for (let i = 0; i < 80; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = Math.random()*100 + 'vw';
+    el.style.background = colors[Math.floor(Math.random()*colors.length)];
+    el.style.width  = (Math.random()*8+6) + 'px';
+    el.style.height = (Math.random()*10+8) + 'px';
+    el.style.borderRadius = Math.random()>.5 ? '50%' : '2px';
+    const dur = Math.random()*1.5+1.5;
+    el.style.animation = `fall ${dur}s ${Math.random()*1}s linear forwards`;
+    wrap.appendChild(el);
+  }
+  setTimeout(() => { wrap.className = 'confetti-wrapper'; }, 4000);
+}
+
+/* ══════════════════════════════════════
+   INIT
+══════════════════════════════════════ */
+fcRender();
+initMatch();
+initFitb();
+</script>
+</body>
+</html>
